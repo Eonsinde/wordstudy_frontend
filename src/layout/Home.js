@@ -195,7 +195,7 @@ const Home = () => {
                         }}
                         margin={10}>
                         {
-                            excosLoading
+                            (excosLoading || excos.length === 0)
                             ?
                             <Preloader size='lg' />
                             :
@@ -252,7 +252,7 @@ const Home = () => {
                         }}
                         margin={10} >  
                         {
-                            eventsLoading
+                            (eventsLoading || events.length === 0)
                             ?
                             <Preloader />
                             :
