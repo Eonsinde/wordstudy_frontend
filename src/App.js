@@ -45,8 +45,8 @@ function App() {
             <RouteControl path='/register' navFixedBg={true} component={Register} />
             
             {/* for the admin site */}
-            <Route path='/admin-login' component={Login} />
-            <PrivateRoute path='/admin-dashboard' component={Dashboard} />
+            <Route exact path='/admin-login' component={Login} />
+            <PrivateRoute exact path='/admin-dashboard' component={Dashboard} />
             <PrivateRoute path='/admin-profile' component={Profile} />
             <PrivateRoute path='/manage-books' component={ManageBook} />
             <PrivateRoute path='/manage-genres' component={ManageGenre} />
