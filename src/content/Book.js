@@ -5,7 +5,7 @@ import mImg from '../addendums/img/motivational_cover.jpg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip';
 
-import BASE_URL from '../constants';
+import {BASE_URL} from '../constants';
 
 import './styles/book.css';
 
