@@ -1,0 +1,6 @@
+@media screen and (max-width: 768px){
+    .my-preloader-card.mpc-3{
+        display: none;
+    }
+}
+

@@ -1,6 +1,8 @@
 import skeleton from '../addendums/img/loader_gif.gif';
 import PropTypes from 'prop-types';
 
+import './styles/preloader.css';
+
 
 const Preloader = ({size}) => {
     const imgStyle = { 
@@ -12,13 +14,13 @@ const Preloader = ({size}) => {
         case 'lg':
             return ( // 370px
                 <>
-                    <div style={{height: '370px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '370px'}} className="my-preloader-card mpc-1 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '370px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '370px'}} className="my-preloader-card mpc-2 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '370px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '370px'}} className="my-preloader-card mpc-3 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
                 </>
@@ -26,13 +28,13 @@ const Preloader = ({size}) => {
         case 'md':
             return ( // 320px
                 <>
-                    <div style={{height: '320px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '320px'}} className="my-preloader-card mpc-1 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '320px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '320px'}} className="my-preloader-card mpc-2 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '320px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '320px'}} className="my-preloader-card mpc-3 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
                 </>
@@ -41,13 +43,13 @@ const Preloader = ({size}) => {
         default:
             return ( // 230px
                 <>
-                    <div style={{height: '230px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '230px'}} className="my-preloader-card mpc-1 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '230px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '230px'}} className="my-preloader-card mpc-2 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
-                    <div style={{height: '230px'}} className="my-preloader-card shadow-sm">
+                    <div style={{height: '230px'}} className="my-preloader-card mpc-3 shadow-sm">
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
                 </>
