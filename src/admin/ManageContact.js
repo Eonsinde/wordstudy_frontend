@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Swal from 'sweetalert2';
 import Preloader from '../content/Preloader';
+import { BASE_URL } from '../constants';
 
 
 const ManangeContact = () => {
@@ -16,7 +17,7 @@ const ManangeContact = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get('/contact');
+                let results = await axios.get(`${BASE_URL}/contact`);
                 setContacts(results.data);
                 setIsLoading(false);
             }catch(err){
@@ -41,7 +42,7 @@ const ManangeContact = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`/contact/${id}`)
+                axios.delete(`${BASE_URL}/contact/${id}`)
                     .then(res => {
                         Toast.fire({
                             icon: 'success',

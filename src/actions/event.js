@@ -1,10 +1,11 @@
 import axios from "axios";
+import { BASE_URL } from "../constants";
 import {createMessage} from './message';
 import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT, GET_EVENTS } from "./types";
 
 
 export const getEvents = () => dispatch => {
-    axios.get('/events')
+    axios.get(`${BASE_URL}/events`)
         .then(res => dispatch({
             type: GET_EVENTS,
             payload: res.data
@@ -13,7 +14,7 @@ export const getEvents = () => dispatch => {
 }
 
 export const deleteEvent = id => (dispatch, getState) => {
-    axios.delete(`/events/${id}/`, tokenConfig(getState))
+    axios.delete(`${BASE_URL}/events/${id}/`, tokenConfig(getState))
         .then(res => {dispatch({
                 type: DELETE_EVENT,
                 evtID: id
@@ -24,7 +25,7 @@ export const deleteEvent = id => (dispatch, getState) => {
 }
 
 export const updateEvent = (id, newData) => (dispatch, getState) => {
-    axios.patch(`/events/${id}/`, newData, tokenConfig(getState))
+    axios.patch(`${BASE_URL}/events/${id}/`, newData, tokenConfig(getState))
         .then(res => {
             dispatch({type: EDIT_EVENT, payload: res.data})
             dispatch(createMessage({updatedBook: `Updated ${res.data.title}`}))
@@ -34,7 +35,7 @@ export const updateEvent = (id, newData) => (dispatch, getState) => {
 
 export const addEvent = (data) => (dispatch, getState) => {
     // send the data directly
-    axios.post(`/events/`, data, tokenConfig(getState))
+    axios.post(`${BASE_URL}/events/`, data, tokenConfig(getState))
         .then(res => {dispatch({
                 type: ADD_EVENT,
                 payload: res.data

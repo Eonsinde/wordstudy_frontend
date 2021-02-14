@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants';
 import { createMessage } from './message';
 import { ADD_BOOK, BOOKS_LOADED, BOOKS_LOADING, DELETE_BOOK, EDIT_BOOK, SEARCHING, SEARCH_COMPLETE, SET_QUERY } from './types';
 
@@ -13,7 +14,7 @@ export const getBooks = () => dispatch => {
         }
     };
 
-    axios.get(`/books`, config)
+    axios.get(`${BASE_URL}/books`, config)
         .then(res => dispatch({
             type: BOOKS_LOADED,
             payload: res.data
@@ -26,7 +27,7 @@ export const setStateQuery = queryPerTime => (dispatch, getState) => { // handle
     // console.log("The queryPerTime in the action", queryPerTime);
 
     dispatch({type: SEARCHING});
-    axios.get(`/books?title=${getState().book.filters.queryText}`)
+    axios.get(`${BASE_URL}/books?title=${getState().book.filters.queryText}`)
         .then(res => dispatch({
             type: SEARCH_COMPLETE,
             payload: res.data
@@ -35,7 +36,7 @@ export const setStateQuery = queryPerTime => (dispatch, getState) => { // handle
 }
 
 export const deleteBook = id => (dispatch, getState) => {
-    axios.delete(`/books/${id}/`, tokenConfig(getState))
+    axios.delete(`${BASE_URL}/books/${id}/`, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: DELETE_BOOK,
@@ -54,7 +55,7 @@ export const updateBook = (id, newData) => (dispatch, getState) => {
         }
     };
 
-    axios.patch(`/books/${id}/`, newData, config)
+    axios.patch(`${BASE_URL}/books/${id}/`, newData, config)
         .then(res => {
             dispatch({type: EDIT_BOOK, payload: res.data})
             dispatch(createMessage({updatedBook: `Updated ${res.data.title}`}));
@@ -80,7 +81,7 @@ export const addBook = (data) => (dispatch, getState) => {
         name: data.genre
     })); 
 
-    axios.post(`/books/`, bookFormData, config)
+    axios.post(`${BASE_URL}/books/`, bookFormData, config)
         .then(res => {dispatch({
                 type: ADD_BOOK,
                 payload: res.data.book

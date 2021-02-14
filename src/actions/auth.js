@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {createMessage} from './message';
 import {returnErrors} from './error';
+import {BASE_URL} from '../constants';
 
 import {
     USER_LOADING,
@@ -21,7 +22,7 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
 
 
-    axios.get('/accounts/auth/user', tokenConfig(getState))
+    axios.get(`${BASE_URL}/accounts/auth/user`, tokenConfig(getState))
         .then(res => dispatch({
             type: USER_LOADED,
             payload: res.data
@@ -46,7 +47,7 @@ export const login = ({username, password}) => dispatch => {
         }
     };
 
-    axios.post('/accounts/auth/login', credentials, config)
+    axios.post(`${BASE_URL}/accounts/auth/login`, credentials, config)
         .then(res => {
             dispatch({
                 type: LOGIN_SUCCESS,
@@ -90,7 +91,7 @@ export const register = (data) => (dispatch) => {
         phone_no: data.phone_no,
     }));
 
-    axios.post('/accounts/auth/register', registerFormData, config)
+    axios.post(`${BASE_URL}/accounts/auth/register`, registerFormData, config)
         .then(res => {
             dispatch({
                 type: REGISTER_SUCCESS,
@@ -109,7 +110,7 @@ export const updateProfile = (data) => (dispatch, getState) => {
 }
 
 export const logout = () => (dispatch, getState) => {
-    axios.post('/accounts/auth/logout', null, tokenConfig(getState))
+    axios.post(`${BASE_URL}/accounts/auth/logout`, null, tokenConfig(getState))
     .then(res => dispatch({
         type: LOGOUT_SUCCESS
     }))

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { EXCOS_LOADED, EXCOS_LOADING, DELETE_EXCO, EDIT_EXCO, ADD_EXCO } from "./types"
 import {createMessage} from './message';
+import { BASE_URL } from "../constants";
 
 
 export const getExcos = () => dispatch => {
@@ -12,7 +13,7 @@ export const getExcos = () => dispatch => {
         }
     };
 
-    axios.get(`/excos`, config)
+    axios.get(`${BASE_URL}/excos`, config)
         .then(res => dispatch({
             type: EXCOS_LOADED,
             payload: res.data
@@ -21,7 +22,7 @@ export const getExcos = () => dispatch => {
 }
 
 export const deleteExco = id => (dispatch, getState) => {
-    axios.delete(`/excos/${id}/`, tokenConfig(getState))
+    axios.delete(`${BASE_URL}/excos/${id}/`, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: DELETE_EXCO,
@@ -40,7 +41,7 @@ export const updateExco = (id, newData) => (dispatch, getState) => {
         }
     };
 
-    axios.patch(`/excos/${id}/`, newData, config)
+    axios.patch(`${BASE_URL}/excos/${id}/`, newData, config)
         .then(res => {
             dispatch({type: EDIT_EXCO, payload: res.data});
             dispatch(createMessage({updatedBook: `Updated ${res.data.name}`}))
@@ -63,7 +64,7 @@ export const addExco = (data) => (dispatch, getState) => {
     excoFormData.append('post', data.post);
     excoFormData.append('photo', data.image, data.imageName);
 
-    axios.post(`/excos/`, excoFormData, config)
+    axios.post(`${BASE_URL}/excos/`, excoFormData, config)
         .then(res => {dispatch({
                 type: ADD_EXCO,
                 payload: res.data

@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { CREATE_USER, DELETE_USER, UPDATE_USER, USERS_LOADED, USERS_LOADING, UPDATE_AUTH_USER } from './types';
 import { createMessage } from './message';
+import { BASE_URL } from '../constants';
 
 
 export const getUsers = () => (dispatch, getState) => {
     // load books
     dispatch({type: USERS_LOADING});
 
-    axios.get(`/accounts/all-users`, tokenConfig(getState))
+    axios.get(`${BASE_URL}/accounts/all-users`, tokenConfig(getState))
         .then(res => dispatch({
             type: USERS_LOADED,
             payload: res.data
@@ -16,7 +17,7 @@ export const getUsers = () => (dispatch, getState) => {
 }
 
 export const deleteUser = id => (dispatch, getState) => {
-    axios.delete(`/profile/${id}/`, tokenConfig(getState))
+    axios.delete(`${BASE_URL}/profile/${id}/`, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: DELETE_USER,
@@ -36,7 +37,7 @@ export const updateUser = (id, newData) => (dispatch, getState) => {
         }
     };
 
-    axios.patch(`/profile/${id}/`, newData, config)
+    axios.patch(`${BASE_URL}/profile/${id}/`, newData, config)
         .then(res => {
             dispatch({type: UPDATE_USER, payload: res.data})
             dispatch({type: UPDATE_AUTH_USER, payload: res.data});
@@ -54,7 +55,7 @@ export const addUser = (formData) => (dispatch, getState) => {
         }
     };
 
-    axios.post(`/accounts/auth/register`, formData, config)
+    axios.post(`${BASE_URL}/accounts/auth/register`, formData, config)
         .then(res => {dispatch({
                 type: CREATE_USER,
                 payload: res.data

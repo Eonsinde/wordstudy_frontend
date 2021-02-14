@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Swal from 'sweetalert2';
 import TablePreloader from '../content/TablePreloader';
+import { BASE_URL } from '../constants';
 
 const ManageMembers = () => {
     let [isLoading, setIsloading] = useState(true);
@@ -15,7 +16,7 @@ const ManageMembers = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get('/members');
+                let results = await axios.get(`${BASE_URL}/members`);
                 setMembers(results.data);
                 setIsloading(false);
             }catch(err){
@@ -44,7 +45,7 @@ const ManageMembers = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`/members/${id}`)
+                axios.delete(`${BASE_URL}/members/${id}`)
                     .then(res => {
                         Toast.fire({
                             icon: 'success',
