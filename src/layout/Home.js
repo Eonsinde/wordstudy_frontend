@@ -21,7 +21,6 @@ import './styles/home.css';
 
 
 const Home = () => {
-
     let [excos, setExcos] = useState([]);
     let [excosLoading, setExcosLoading] = useState(true);
 
