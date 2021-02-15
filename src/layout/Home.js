@@ -34,15 +34,21 @@ const Home = () => {
         const fetchExcos = async () => {
             const result = await axios(`/excos`);
 
-            setExcos(result.data);
-            setExcosLoading(false);
+            console.log(result.data);
+            if (result.data){
+                setExcos(result.data);
+                setExcosLoading(false);
+            }
         }
 
         const fetchEvents = async () => {
             const result = await axios.get(`/events`);
 
-            setEvents(result.data);
-            setEventsLoading(false);
+            console.log(result.data);
+            if (result.data){
+                setEvents(result.data);
+                setEventsLoading(false);
+            }
         }
 
         fetchExcos();
