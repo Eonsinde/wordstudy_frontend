@@ -34,8 +34,7 @@ const Home = () => {
         const fetchExcos = async () => {
             const result = await axios(`/excos`);
 
-            console.log(result.data);
-            if (result.data){
+            if (typeof result.data == Array){
                 setExcos(result.data);
                 setExcosLoading(false);
             }
@@ -44,8 +43,7 @@ const Home = () => {
         const fetchEvents = async () => {
             const result = await axios.get(`/events`);
 
-            console.log(result.data);
-            if (result.data){
+            if (typeof result.data == Array){
                 setEvents(result.data);
                 setEventsLoading(false);
             }
