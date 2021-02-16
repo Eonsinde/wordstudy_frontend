@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './styles/contact.css';
 
+import {BASE_URL} from '../constants';
+
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -40,7 +42,7 @@ const Contact = () => {
                 subject: subject,
                 message: message
             }
-            axios.post('/contact/', postData, config)
+            axios.post(`${BASE_URL}/contact/`, postData, config)
                 .then(res => {
                     Toast.fire({
                         icon: 'success',
@@ -75,7 +77,7 @@ const Contact = () => {
                 prayer_point: prayerReq,
             }
             
-            axios.post('/prayer-request/', postData, config)
+            axios.post(`${BASE_URL}/prayer-request/`, postData, config)
                 .then(res => {
                     Toast.fire({
                         icon: 'success',

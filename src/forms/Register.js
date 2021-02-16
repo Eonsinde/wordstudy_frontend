@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './styles/register.css';
 
+import {BASE_URL} from '../constants';
+
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -39,7 +41,7 @@ const Register = () => {
                 }
             }
             
-            axios.post('/members/', postData, config)
+            axios.post(`${BASE_URL}/members/`, postData, config)
                 .then(res => {
                     Toast.fire({
                         icon: 'success',
