@@ -41,7 +41,10 @@ export const addGenre = (data) => (dispatch, getState) => {
             })
             dispatch(createMessage({addedBook: `Added ${res.data.name}`}))
         })
-        .catch(err => dispatch(createMessage({failed: `Operation Failed`})));
+        .catch(err => {
+            dispatch(createMessage({failed: `Operation Failed`}));
+            console.log("Word Study says:-", err);
+        });
 }
 
 
