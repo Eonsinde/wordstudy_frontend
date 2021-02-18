@@ -19,7 +19,9 @@ const CreateBook = ({show, setShow, addBook}) => {
         const fetchGenres = async() => {
             let result = await axios.get('/genres');
 
-            setGenres(result.data);
+            if (typeof result.data === Array)
+                setGenres(result.data);
+            setGenres(genres);
         }
 
         fetchGenres();
@@ -89,9 +91,14 @@ const CreateBook = ({show, setShow, addBook}) => {
                             <select onChange={e => setGenre(e.target.value)} >
                                 <option value="" key="0">All</option>
                                 {
+                                    genres.length > 0
+                                    ?
                                     genres.map(genre => 
-                                        <option value={genre.name} key={genre.id}>{genre.name}</option>    
+                                     
+                                       <option value={genre.name} key={genre.id}>{genre.name}</option>    
                                     )
+                                    :
+                                    <option value="" key="1">Couldn't load genres or No genres added yet</option>
                                 }
                             </select>
                         </div>

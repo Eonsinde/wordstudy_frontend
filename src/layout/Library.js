@@ -73,11 +73,11 @@ const Library = ({ books, categories, getBooks, getCategories, setStateQuery, is
                         ?
                         <Preloader size='md' /> 
                         :
-                        !filteringBooks && books.length === 0 // incase nothing is found
+                        (!filteringBooks && books.length === 0) // incase nothing is found
                         ?
                         <h1 className='shadow-sm p-5 bg-white text-center' style={{gridColumn: '1/4'}}>Oops!<br/>Nothing Found</h1>
                         : 
-                        books.map(book => 
+                        typeof books === Array && books.map(book => 
                             <Book key={book.id} data={book} />
                         )
                     }

@@ -18,13 +18,17 @@ const ManangeContact = () => {
         const fetchMembers = async () => {
             try{
                 let results = await axios.get(`${BASE_URL}/contact`);
-                setContacts(results.data);
-                setIsLoading(false);
-            }catch(err){
+
+                if (typeof results.data === Array){
+                    setContacts(results.data);
+                    setIsLoading(false);
+                }
+            }
+            catch(err){
                 Toast.fire({
                     icon: 'error',
                     title: 'Couldn\'t load members data'
-                })
+                });
             }
         }
     fetchMembers();

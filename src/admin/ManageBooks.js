@@ -103,7 +103,7 @@ const ManageBooks = ({books, genres, booksLoading, getBooks, deleteBook, updateB
                 ?
                 <Preloader size='md' />
                 :
-                books.map((book, index) => (
+                typeof books === Array && books.map((book, index) => (
                     <div key={book.id} className="my-admin-card shadow-sm">
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <small className='text-dark'><i className='fas fa-book-open fa-3x'></i></small>
@@ -203,7 +203,7 @@ const ManageBooks = ({books, genres, booksLoading, getBooks, deleteBook, updateB
                             <select onChange={e => setGenre(e.target.value)} >
                                 <option value="" key="0">All</option>
                                 {
-                                    genres.map(genre => 
+                                    typeof genres === Array && genres.map(genre => 
                                         <option value={genre.name} key={genre.id}>{genre.name}</option>    
                                     )
                                 }

@@ -17,9 +17,13 @@ const ManageMembers = () => {
         const fetchMembers = async () => {
             try{
                 let results = await axios.get(`${BASE_URL}/members`);
-                setMembers(results.data);
-                setIsloading(false);
-            }catch(err){
+
+                if (typeof results.data === Array){
+                    setMembers(results.data);
+                    setIsloading(false);
+                }
+            }
+            catch(err){
                 Toast.fire({
                     icon: 'error',
                     title: 'Couldn\'t load members data'

@@ -72,7 +72,7 @@ const ManageGenre = ({genres, getCategories, deleteGenre, updateGenre}) => {
                 ?
                 <Preloader />
                 :
-                genres?.map(genre => 
+                typeof genres === Array && genres.map(genre => 
                     <div key={genre.id} className="my-admin-card shadow-sm">
                         <div className='text-center mb-2'>
                             <small >Genre</small>

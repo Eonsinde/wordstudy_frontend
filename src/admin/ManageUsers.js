@@ -36,12 +36,12 @@ const ManageUsers = ({users, isLoading, getUsers, deleteUser, updateUser}) => {
         setUsersLoading(isLoading);
     }, []);
 
-    const setCurrentUser = (user) => {
+    const setCurrentUser = (user) => { // to handle setting the active user 
         setCUser(user);
         setShow(true);
     }
 
-    const setCurrentUserForUpdate = (user) => {
+    const setCurrentUserForUpdate = (user) => { // to ensure the modal targets the correct user
         setCUser(user);
         setShowUpdate(true);
     }
@@ -132,7 +132,7 @@ const ManageUsers = ({users, isLoading, getUsers, deleteUser, updateUser}) => {
                 ?
                 <Preloader />
                 :
-                users?.map(user => 
+                typeof users === Array && users.map(user => 
                     user.id !== authUser.id 
                     ?
                     <div className='card' key={user.id}>
