@@ -55,7 +55,7 @@ const Library = ({ books, categories, getBooks, getCategories, setStateQuery, is
                                 <input type='checkbox' value='' />                                
                             </Link>   
                             {
-                                categories.map(cat => 
+                                typeof categories === Array && categories.map(cat => 
                                     <Link to='#' key={cat.id}>
                                         <span to="#">{cat.name}</span> 
                                         <input type='checkbox' value={cat.id} />                                
