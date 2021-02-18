@@ -16,7 +16,7 @@ const ManagePrayers = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get('/prayer-request');
+                let results = await axios.get('/prayer-request/');
                 if (typeof results.data === Array){
                     setPrayers(results.data);
                     setIsLoading(false);

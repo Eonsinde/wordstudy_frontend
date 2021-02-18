@@ -1,10 +1,11 @@
 import axios from "axios";
 import { ADD_GENRE, GET_CATEGORIES, EDIT_GENRE, DELETE_GENRE } from "./types";
 import {createMessage} from './message';
+import {BASE_URL} from '../constants';
 
 
 export const getCategories = () => dispatch => {
-    axios.get('/genres')
+    axios.get(`${BASE_URL}/genres`)
         .then(res => dispatch({
             type: GET_CATEGORIES,
             payload: res.data
@@ -13,7 +14,7 @@ export const getCategories = () => dispatch => {
 }
 
 export const deleteGenre = id => (dispatch, getState) => {
-    axios.delete(`/genres/${id}/`, tokenConfig(getState))
+    axios.delete(`${BASE_URL}/genres/${id}/`, tokenConfig(getState))
         .then(res => {dispatch({
                 type: DELETE_GENRE,
                 catID: id
@@ -24,7 +25,7 @@ export const deleteGenre = id => (dispatch, getState) => {
 }
 
 export const updateGenre = (id, newData) => (dispatch, getState) => {
-    axios.patch(`/genres/${id}/`, newData, tokenConfig(getState))
+    axios.patch(`${BASE_URL}/genres/${id}/`, newData, tokenConfig(getState))
         .then(res => {
             dispatch({type: EDIT_GENRE, payload: res.data})
             dispatch(createMessage({updatedBook: `Updated ${res.data.name}`}))
@@ -34,7 +35,7 @@ export const updateGenre = (id, newData) => (dispatch, getState) => {
 
 export const addGenre = (data) => (dispatch, getState) => {
     // send the data directly
-    axios.post(`/genres/`, data, tokenConfig(getState))
+    axios.post(`${BASE_URL}/genres/`, data, tokenConfig(getState))
         .then(res => {dispatch({
                 type: ADD_GENRE,
                 payload: res.data
