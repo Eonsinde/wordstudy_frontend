@@ -5,7 +5,7 @@ import {BASE_URL} from '../constants';
 
 
 export const getCategories = () => dispatch => {
-    axios.get(`${BASE_URL}/genres`)
+    axios.get(`${BASE_URL}/genres/`)
         .then(res => dispatch({
             type: GET_CATEGORIES,
             payload: res.data

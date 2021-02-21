@@ -69,8 +69,8 @@ const Register = () => {
         <section className="register-section">
             <header className='contact-banner'>
                 <main className='breadcrumbs-wrapper mb-3'>
-                    <h2 class="mb-2 bread">Register</h2>
-                    <p class="breadcrumbs"><span class="mr-2"><Link to="/">Home</Link></span> / <span>Register</span></p>
+                    <h2 className="mb-2 bread">Register</h2>
+                    <p className="breadcrumbs"><span className="mr-2"><Link to="/">Home</Link></span> / <span>Register</span></p>
                 </main>
             </header>
             <div className="container">

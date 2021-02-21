@@ -22,10 +22,9 @@ const book = (state=initialState, action) => {
         case BOOKS_LOADED:
             return {
                 ...state,
-                books: action.payload,
+                books: [...action.payload],
                 isLoading: false
             }
-            
         case SET_QUERY:
             return {
                 ...state,

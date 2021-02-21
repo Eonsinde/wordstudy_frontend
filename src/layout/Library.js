@@ -77,7 +77,7 @@ const Library = ({ books, categories, getBooks, getCategories, setStateQuery, is
                         ?
                         <h1 className='shadow-sm p-5 bg-white text-center' style={{gridColumn: '1/4'}}>Oops!<br/>Nothing Found</h1>
                         : 
-                        typeof books === Array && books.map(book => 
+                        books.map(book => 
                             <Book key={book.id} data={book} />
                         )
                     }

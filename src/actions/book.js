@@ -14,7 +14,7 @@ export const getBooks = () => dispatch => {
         }
     };
 
-    axios.get(`${BASE_URL}/books`, config)
+    axios.get(`${BASE_URL}/books/`, config)
         .then(res => dispatch({
             type: BOOKS_LOADED,
             payload: res.data
