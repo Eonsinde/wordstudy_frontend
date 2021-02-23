@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import Modal from 'react-bootstrap/Modal';
 import '../styles/createbook.css';
 
+import {BASE_URL} from '../../constants';
+
 const CreateBook = ({show, setShow, addBook}) => {
     let [genres, setGenres] = useState([]);
     let [title, setTitle] = useState('');
@@ -17,9 +19,9 @@ const CreateBook = ({show, setShow, addBook}) => {
 
     useEffect(() => {
         const fetchGenres = async() => {
-            let result = await axios.get('/genres');
+            let result = await axios.get(`${BASE_URL}/genres/`);
 
-            if (typeof result.data === Array)
+            if (typeof result.data === 'object')
                 setGenres(result.data);
             setGenres(genres);
         }
