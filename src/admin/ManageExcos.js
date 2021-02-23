@@ -93,7 +93,7 @@ const ManageExcos = ({excos, getExcos, deleteExco, updateExco, excosLoading}) =>
                 ?
                 <Preloader />
                 :
-                typeof excos === Array && excos.map((exco, index) => (
+                excos.map((exco, index) => (
                     <div key={exco.id} className="my-admin-card shadow-sm">
                         <img className='card-img-top' src={exco.photo} alt={`${exco.name} avatar`} />
                         <div className='card-body'>

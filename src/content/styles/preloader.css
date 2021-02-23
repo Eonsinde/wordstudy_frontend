@@ -4,3 +4,10 @@
     }
 }
 
+@media screen and (max-width: 575px){
+    .my-preloader-card.mpc-3,
+    {
+        display: none;
+    }
+}
+

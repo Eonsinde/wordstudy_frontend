@@ -16,9 +16,9 @@ const ManageMembers = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get(`${BASE_URL}/members`);
+                let results = await axios.get(`${BASE_URL}/members/`);
 
-                if (typeof results.data === Array){
+                if (typeof results.data === "object"){
                     setMembers(results.data);
                     setIsloading(false);
                 }
@@ -49,7 +49,7 @@ const ManageMembers = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${BASE_URL}/members/${id}`)
+                axios.delete(`${BASE_URL}/members/${id}/`)
                     .then(res => {
                         Toast.fire({
                             icon: 'success',

@@ -17,9 +17,9 @@ const ManangeContact = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get(`${BASE_URL}/contact`);
+                let results = await axios.get(`${BASE_URL}/contact/`);
 
-                if (typeof results.data === Array){
+                if (typeof results.data === "object"){
                     setContacts(results.data);
                     setIsLoading(false);
                 }
@@ -46,7 +46,7 @@ const ManangeContact = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${BASE_URL}/contact/${id}`)
+                axios.delete(`${BASE_URL}/contact/${id}/`)
                     .then(res => {
                         Toast.fire({
                             icon: 'success',

@@ -103,7 +103,7 @@ const ManageBooks = ({books, genres, booksLoading, getBooks, deleteBook, updateB
                 ?
                 <Preloader size='md' />
                 :
-                typeof books === Array && books.map((book, index) => (
+                books.map((book, index) => (
                     <div key={book.id} className="my-admin-card shadow-sm">
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <small className='text-dark'><i className='fas fa-book-open fa-3x'></i></small>

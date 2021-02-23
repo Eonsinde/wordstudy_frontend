@@ -15,10 +15,14 @@ export const getBooks = () => dispatch => {
     };
 
     axios.get(`${BASE_URL}/books/`, config)
-        .then(res => dispatch({
-            type: BOOKS_LOADED,
-            payload: res.data
-        }))
+        .then(res => {
+            if (typeof res.data === 'object'){
+                dispatch({
+                    type: BOOKS_LOADED,
+                    payload: res.data
+                });
+            }
+        })
         .catch(err => console.error("Word Study Says:- ",err));
 }
 
@@ -82,7 +86,8 @@ export const addBook = (data) => (dispatch, getState) => {
     })); 
 
     axios.post(`${BASE_URL}/books/`, bookFormData, config)
-        .then(res => {dispatch({
+        .then(res => {
+            dispatch({
                 type: ADD_BOOK,
                 payload: res.data.book
             })

@@ -6,10 +6,14 @@ import { ADD_EVENT, DELETE_EVENT, EDIT_EVENT, GET_EVENTS } from "./types";
 
 export const getEvents = () => dispatch => {
     axios.get(`${BASE_URL}/events/`)
-        .then(res => dispatch({
-            type: GET_EVENTS,
-            payload: res.data
-        }))
+        .then(res => {
+            if (typeof res.data === 'object'){
+                dispatch({
+                    type: GET_EVENTS,
+                    payload: res.data
+                })
+            }
+        })
         .catch(err => console.error(err))
 }
 

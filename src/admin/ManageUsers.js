@@ -132,7 +132,7 @@ const ManageUsers = ({users, isLoading, getUsers, deleteUser, updateUser}) => {
                 ?
                 <Preloader />
                 :
-                typeof users === Array && users.map(user => 
+                users.map(user => 
                     user.id !== authUser.id 
                     ?
                     <div className='card' key={user.id}>

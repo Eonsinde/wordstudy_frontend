@@ -33,6 +33,8 @@ import ManageContacts from './admin/ManageContact';
 import ManagePrayers from './admin/ManagePrayers';
 
 
+
+
 function App() {
   return (
     <Provider store={store}>
@@ -57,7 +59,6 @@ function App() {
             <PrivateRoute path='/manage-contacts' component={ManageContacts} />
             <PrivateRoute path='/manage-prayer-requests' component={ManagePrayers} />
 
-            {/* <Route component={PageNotFound} />  */}
             <RouteControl navFixedBg={true} component={PageNotFound} />
 
         </Switch>

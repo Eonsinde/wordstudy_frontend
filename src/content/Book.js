@@ -5,15 +5,13 @@ import mImg from '../addendums/img/motivational_cover.jpg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip';
 
-import {BASE_URL} from '../constants';
-
 import './styles/book.css';
 
 
 const Book = ({ data:mData }) => {
     return (
             <div className="card shadow-sm">
-                <Link to={`${BASE_URL + mData.file}`} target="_blank" rel="noreferrer" className="download-btn"><i className='fas fa-download mr-2'></i></Link>
+                <Link to={`//${mData.file}`} target="_blank" rel="noreferrer" className="download-btn"><i className='fas fa-download mr-2'></i></Link>
                 <img className="card-img-top" src={ mData.genre.name === 'spiritual' ? sImg : mImg } alt='book cover' />
                 <div className="card-body text-center">
                     <p className="card-text text-dark text-capitalize">

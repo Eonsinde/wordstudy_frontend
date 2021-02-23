@@ -24,7 +24,7 @@ const Preloader = ({size}) => {
                         <img style={imgStyle} className="" src={skeleton} alt='preloader cover' />
                     </div>
                 </>
-            );
+            );  
         case 'md':
             return ( // 320px
                 <>

@@ -52,13 +52,13 @@ const Library = ({ books, categories, getBooks, getCategories, setStateQuery, is
                         <form className='filter-dropdown-content' onSubmit={e => e.preventDefault()}>
                             <Link to='#' key={0}>
                                 <span to="#">All</span> 
-                                <input type='checkbox' value='' />                                
+                                <input type='radio' value='' />                                
                             </Link>   
                             {
-                                typeof categories === Array && categories.map(cat => 
+                                categories.map(cat => 
                                     <Link to='#' key={cat.id}>
                                         <span to="#">{cat.name}</span> 
-                                        <input type='checkbox' value={cat.id} />                                
+                                        <input type='radio' value={cat.id} />                                
                                     </Link>    
                                 )
                             }

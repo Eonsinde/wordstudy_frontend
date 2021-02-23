@@ -4,6 +4,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Preloader from '../content/Preloader';
 
+import {BASE_URL} from '../constants';
+
 
 const ManagePrayers = () => {
     let [prayers, setPrayers] = useState([]);
@@ -16,8 +18,8 @@ const ManagePrayers = () => {
     useEffect(() => {
         const fetchMembers = async () => {
             try{
-                let results = await axios.get('/prayer-request/');
-                if (typeof results.data === Array){
+                let results = await axios.get(`${BASE_URL}/prayer-request/`);
+                if (typeof results.data === "object"){
                     setPrayers(results.data);
                     setIsLoading(false);
                 }
@@ -44,7 +46,7 @@ const ManagePrayers = () => {
         })
         .then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`/prayer-request/${id}`)
+                axios.delete(`/prayer-request/${id}/`)
                     .then(res => {
                         Toast.fire({
                             icon: 'success',

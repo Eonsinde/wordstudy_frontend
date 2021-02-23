@@ -2,7 +2,6 @@ import axios from 'axios';
 import {createMessage} from './message';
 import {returnErrors} from './error';
 import {BASE_URL} from '../constants';
-import checkResponseData from './check';
 
 import {
     USER_LOADING,

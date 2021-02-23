@@ -95,7 +95,7 @@ const ManageEvent = ({events, getEvents, updateEvent, deleteEvent}) => {
                 ?
                 <Preloader />
                 :
-                typeof events === Array && events.map((evt, index) => (
+                events.map((evt, index) => (
                     <div key={evt.id} className="my-admin-card shadow-sm">
                         <div className="d-flex justify-content-center align-items-center mb-3">
                             <small>Event</small>

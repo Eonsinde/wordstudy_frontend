@@ -1,0 +1,30 @@
+.pnf-section{
+    padding: 100px 0;
+    height: 1000px;
+}
+
+.svg-404{
+    height: 65%;
+}
+
+@media screen and (max-width: 1250px){
+    .pnf-section{
+        height: 700px;
+    }
+    
+    .svg-404{
+        height: 50%;
+    }
+
+
+}
+
+@media screen and (max-width: 768px){
+    .pnf-section{
+        height: 600px;
+    }
+
+    .pnf-section > div > h1{
+        font-size: 1.9rem;
+    }
+}

@@ -13,11 +13,15 @@ export const getExcos = () => dispatch => {
         }
     };
 
-    axios.get(`${BASE_URL}/excos`, config)
-        .then(res => dispatch({
-            type: EXCOS_LOADED,
-            payload: res.data
-        }))
+    axios.get(`${BASE_URL}/excos/`, config)
+        .then(res => {
+            if (typeof res.data === 'object'){
+                dispatch({
+                    type: EXCOS_LOADED,
+                    payload: res.data
+                })
+            }
+        })
         .catch(err => console.error(err));
 }
 
