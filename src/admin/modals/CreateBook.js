@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useSelector} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {addBook} from '../../actions/book';
@@ -21,9 +21,9 @@ const CreateBook = ({show, setShow, addBook}) => {
         const fetchGenres = async() => {
             let result = await axios.get(`${BASE_URL}/genres/`);
 
-            if (typeof result.data === 'object')
+            if (typeof result.data === 'object'){
                 setGenres(result.data);
-            setGenres(genres);
+            }
         }
 
         fetchGenres();
@@ -126,5 +126,5 @@ const Toast = Swal.mixin({
     }
 });
 
- 
+
 export default connect(null, {addBook})(CreateBook);
