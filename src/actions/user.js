@@ -8,7 +8,7 @@ export const getUsers = () => (dispatch, getState) => {
     // load books
     dispatch({type: USERS_LOADING});
 
-    axios.get(`${BASE_URL}/accounts/all-users/`, tokenConfig(getState))
+    axios.get(`${BASE_URL}/accounts/all-users`, tokenConfig(getState))
         .then(res => {
             if (typeof res.data === 'object'){
                 dispatch({

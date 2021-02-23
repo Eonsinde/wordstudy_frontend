@@ -138,7 +138,7 @@ const ManageUsers = ({users, isLoading, getUsers, deleteUser, updateUser}) => {
                     <div className='card' key={user.id}>
                         <img src={user.profile?.image} alt={`${user.username} avatar`} />
                         <div className='card-body text-center'>
-                            <div>
+                            <div key={user.id}>
                                 <Link to='#' className='text-dark' style={{textDecoration: 'none'}} onClick={() => setCurrentUser(user)}>{user.username}</Link>
                             </div>
                             <div className='btn-group mt-3'>
